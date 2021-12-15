@@ -1,0 +1,50 @@
+{
+    "author": {
+        "name": "TTS Design",
+        "email": "ttsdesign@gmail.com",
+        "url": "http://git.ttsx.xyz"
+    },
+    "bugs": {
+        "url": "http://git.ttsx.xyz/org.tts/style/issues"
+    },
+    "bundleDependencies": false,
+    "dependencies": {
+        "@jpillora/notifyjs-browser": "https://github.com/jpillora/notifyjs/archive/v0.4.2.tar.gz",
+        "@js/Core": "^0.2.6",
+        "bootstrap": "^4.6.0",
+        "jquery": "^3.4.1",
+        "jquery-mobile": "^1.5.0-alpha.1",
+        "jquery-ui": "^1.12.1",
+        "material-icons": "^0.5.4",
+        "popper.js": "^1.16.0"
+    },
+    "deprecated": false,
+    "description": "TTS Style",
+    "devDependencies": {
+        "css-loader": "^3.2.0",
+        "file-loader": "^4.2.0",
+        "grunt": "^1.0.4",
+        "grunt-contrib-copy": "^1.0.0",
+        "html-loader": "^0.5.5",
+        "style-loader": "^1.0.0",
+        "url-loader": "^2.2.0",
+        "webpack-cli": "^3.3.10"
+    },
+    "scripts": {
+        "build": "npm install && node build/build.js",
+        "deploy": "node build/deploy.js"
+    },
+    "homepage": "http://git.ttsx.xyz/org.tts/style",
+    "keywords": [
+        "tts",
+        "style"
+    ],
+    "license": "MIT",
+    "name": "@tts/style",
+    "repository": {
+        "type": "git",
+        "url": "http://git.ttsx.xyz/org.tts/style"
+    },
+    "title": "TTS Style",
+    "version": "0.0.1"
+}

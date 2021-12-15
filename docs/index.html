@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="UTF-8">
+		<title>@TTS/style:Home</title>
+		<link rel="stylesheet" href="../dist/org.tts.css">
+		<script>
+			$(function() {
+				$('.dropdown-toggle').hover(function () {$(this).dropdown('show')})
+				$('.dropdown-menu').mouseleave(function () {$(this).prev().dropdown('hide')})
+				console.log('ok')
+			})
+		</script>
+	</head>
+	<body class="TTS">
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<a class="navbar-brand" href="#"><!--<img src="../@images/TTS_50.png" title="TTS Design" class="logo" style="position:relative;top:-25px;left:-5px"/>--></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+		<div class="collapse navbar-collapse" id="navbarColor01">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a></li>
+				<li class="nav-item"><a class="nav-link" href="Files.html">Files</a></li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle Components" id="ComponentsDropdownLink" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Components</a>
+					<div class="dropdown-menu" aria-labelledby="ComponentsDropdownLink">
+						<a class="dropdown-item" href="Components/Alert.html">Alert</a>
+						<a class="dropdown-item" href="Components/Card.html">Card</a>
+						<a class="dropdown-item" href="Components/Navbar.html">Navbar</a>
+						<a class="dropdown-item" href="Components/NotifyJs.html">NotifyJs</a>
+						<a class="dropdown-item" href="Components/Modal.html">Modals</a>
+						</div>
+					</li>
+				<li class="nav-item"> <a class="nav-link" href="Colors.html">Colors</a></li>
+				<li class="nav-item"> <a class="nav-link" href="Links.html">Links</a></li>
+			</ul>
+			<form class="form-inline my-2 my-lg-0">
+				<input class="form-control mr-sm-2" type="text" placeholder="Search">
+				<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+			</form>
+		</div>
+	</nav>
+
+	<!--
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="#">Home</a></li>
+			<li class="breadcrumb-item"><a href="#">Library</a></li>
+			<li class="breadcrumb-item active" aria-current="page">Data</li>
+		</ol>
+	</nav>
+	-->
+	<br>
+
+	<div class="container">
+		<div class="alert alert-primary alert-dismissible fade show" role="alert">
+			<strong>Webpack Build!</strong> Webpack bundler succeeded
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="card text-center">
+			<div class="card-header">
+				Featured Notify....
+			</div>
+			<div class="card-body">
+				<h5 class="card-title">...TTS Themed NotifyJs</h5>
+				<p class="card-text">Click on the button to see!.</p>
+				<a href="#" class="btn btn-primary Notify">Launch</a>
+			</div>
+			<div class="card-footer">
+				2 days ago
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="card text-center">
+			<div class="card-header">
+				<ul class="nav nav-tabs card-header-tabs">
+					<li class="nav-item">
+						<a class="nav-link active" href="#">Active</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Link</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+					</li>
+				</ul>
+			</div>
+			<div class="card-body">
+				<h5 class="card-title">Themed Modal</h5>
+				<p class="card-text">Click to see themed modal</p>
+				<a href="#" class="btn btn-primary ModalLaunch">Launch</a>
+			</div>
+		</div>
+	</div>
+
+	<br><br>
+
+	<!--
+	<div class="container">
+		<nav aria-label="Page navigation example">
+			<ul class="pagination justify-content-center">
+				<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+				<li class="page-item"><a class="page-link" href="#">1</a></li>
+				<li class="page-item"><a class="page-link" href="#">2</a></li>
+				<li class="page-item"><a class="page-link" href="#">3</a></li>
+				<li class="page-item"><a class="page-link" href="#">Next</a></li>
+			</ul>
+		</nav>
+	</div>
+	-->
+
+	<div class="modal fade" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Modal title</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>Modal body text goes here.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<i class="fas fa-ankh"></i>
+	</body>
+</html>

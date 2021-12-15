@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="UTF-8">
+		<title>@TTS::Style:Snippets</title>
+		<link rel="stylesheet" href="../dist/org.tts.css">
+		<style>
+			body{padding-top:15px}
+			.ib{display:inline-block}
+			.modal.SnippetViewer .modal-dialog{max-width:unset;width:90%;height:90%}
+			.modal.SnippetViewer .modal-body{white-space:pre;font-size:.9em;padding:.5rem;overflow:scroll}
+			[data-snippet="Breadcrumb-Basic"] .breadcrumb-item+.breadcrumb-item::before{content:"/"}
+			[data-snippet] {margin-top: 10px;}
+			[data-snippet|="Badge"] {margin-top:0px;margin-bottom:10px;}
+			.mh15 {margin-left:15px;margin-right:15px}
+			.Toolbar i {color:white}
+			.Toolbar {
+				justify-content: unset;
+				padding-left: 2px;
+				position: sticky;
+				top: 0px;
+			}
+			.Toolbar i {
+				margin-left: 5px;
+				margin-right: 5px;
+			}
+		</style>
+		<script>
+			function CopySnippet(){let selection=window.getSelection(),range=document.createRange();range.selectNodeContents($('.modal.SnippetViewer .modal-body')[0]);selection.removeAllRanges();selection.addRange(range);document.execCommand('copy');window.getSelection().removeAllRanges()}
+
+			$(function() {
+				$('div[data-snippet]:not(".enable-links") a').click((event) => {event.preventDefault()})
+				//$('.enable-links a').click((event) => {event.stopPropagation(); return true})
+				$('.modal.SnippetViewer button.Copy').click(CopySnippet)
+
+				$('[data-snippet]').click(function (event) {
+					$('.modal.SnippetViewer .modal-title').text($(this).data('snippet').replace(/[ -\.]/g, '::'))
+					$('.modal.SnippetViewer .modal-body').text(this.innerHTML.trim().replace(/\n\t/g, '\n'))
+					$('.modal.SnippetViewer').modal('show')
+				})
+
+				$('[data-snippet="List-Group"] a').on('click', function (e) {
+					e.stopPropagation()
+					$(this).tab('show')
+				})
+
+				$.notify("Do not press this button", {globalPosition: "bottom left", autoHide: false, className: 'ttsdark'});
+
+				$('.notifyjs-bootstrap-base').on('click', function (e) {
+					e.preventDefault()
+					e.stopPropagation()
+					$('.modal.SnippetViewer .modal-title').text('NofityJs')
+					$('.modal.SnippetViewer .modal-body').text(`$.notify("Do not press this button", {globalPosition: "bottom left", autoHide: false, className: 'ttsdark'})`)
+					$('.modal.SnippetViewer').modal('show')
+				})
+
+			})
+		</script>
+	</head>
+	<body class="TTS">
+
+<!-- Snippet Viewer Modal -->
+<div class="modal SnippetViewer" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Modal title</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body"><p>Modal body text goes here.</p></div><div class="modal-footer"><button type="button" class="btn btn-primary Copy">Copy</button></div></div></div></div>
+
+<div class="container">
+
+<!--Snippet::Alert.Basic-->
+<div data-snippet="Alert-Basic">
+	<div class="alert alert-primary alert-dismissible fade show" role="alert">
+		<strong>Basic Alert</strong> Example of a basic alert.
+	</div>
+</div>
+<!--/Snippet::Alert.Basic-->
+
+<!--Snippet::Alert.Dissmissable-->
+<div data-snippet="Alert-Dismissable">
+	<div class="alert alert-secondary alert-dismissible fade show" role="alert">
+		<strong>Dismissable Alert</strong> Example of a dismissable alert
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	</div>
+</div>
+<!--/Snippet::Alert.Dismissable-->
+
+
+<!--Snippet::Badge.Basic-->
+<div data-snippet="Badge-Basic" class="ib">
+	<span class="badge badge-primary">Primary</span>
+</div>
+<!--/Snippet::Badge.Basic-->
+
+<!--Snippet::Badge.Pill-->
+<div data-snippet="Badge-Pill" class="ib">
+	<span class="badge badge-pill badge-danger">Danger</span>
+</div>
+<!--/Snippet::Badge.Pill-->
+
+<!--Snippet::Badge.Link-->
+<div data-snippet="Badge-Link" class="ib">
+	<a href="#" class="badge badge-secondary">Secondary</a>
+</div>
+<!--/Snippet::Badge.Link-->
+
+
+<!--Snippet::Breadcrumb:Basic-->
+<div data-snippet="Breadcrumb-Basic">
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="#">Home</a></li>
+			<li class="breadcrumb-item"><a href="#">Library</a></li>
+			<li class="breadcrumb-item active" aria-current="page">Data</li>
+		</ol>
+	</nav>
+</div>
+<!--/Snippet::Breadcrumb:Basic-->
+
+
+<!--Snippet::Breadcrumb:CustomDivider-->
+<div data-snippet="Breadcrumb-CustomDivider">
+	<style>
+	.breadcrumb-item + .breadcrumb-item::before {
+		content: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPjxwYXRoIGQ9Ik0yLjUgMEwxIDEuNSAzLjUgNCAxIDYuNSAyLjUgOGw0LTQtNC00eiIgZmlsbD0iY3VycmVudENvbG9yIi8+PC9zdmc+);
+	}
+	</style>
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="#">Home</a></li>
+			<li class="breadcrumb-item"><a href="#">Library</a></li>
+			<li class="breadcrumb-item active" aria-current="page">Data</li>
+		</ol>
+	</nav>
+</div>
+<!--/Snippet::Breadcrumb:CustomDivider-->
+
+
+<!--Snippet::Button:Link-->
+<div data-snippet="Button-Link" class="ib">
+	<a class="btn btn-primary" href="#" role="button">Link</a>
+</div>
+<!--/Snippet::Button:Link-->
+
+<!--Snippet::Button:Button-->
+<div data-snippet="Button-Button" class="ib">
+	<button class="btn btn-secondary" type="submit">Button</button>
+</div>
+<!--/Snippet::Button:Button-->
+
+<!--Snippet::Button:Split-->
+<div data-snippet="Button-Split" class="ib">
+	<div class="btn-group">
+		<button type="button" class="btn btn-primary">Action</button>
+		<button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<span class="sr-only">Toggle Dropdown</span>
+		</button>
+		<div class="dropdown-menu">
+			<a class="dropdown-item" href="#">Action</a>
+			<a class="dropdown-item" href="#">Another action</a>
+			<a class="dropdown-item" href="#">Something else here</a>
+			<div class="dropdown-divider"></div>
+			<a class="dropdown-item" href="#">Separated link</a>
+		</div>
+	</div>
+</div>
+<!--Snippet::Button:Split-->
+
+
+<!--Snippet::Button:Radio-->
+<div data-snippet="Button-Radio">
+	<div class="btn-group btn-group-toggle" data-toggle="buttons">
+		<label class="btn btn-secondary active">
+			<input type="radio" name="options" id="option1" autocomplete="off" checked> Active
+		</label>
+		<label class="btn btn-secondary">
+			<input type="radio" name="options" id="option2" autocomplete="off"> Radio
+		</label>
+		<label class="btn btn-secondary">
+			<input type="radio" name="options" id="option3" autocomplete="off"> Radio
+		</label>
+	</div>
+</div>
+<!--/Snippet::Button:Radio-->
+
+<!--Snippet::Card:Basic-->
+<div data-snippet="Card-Basic">
+	<div class="card">
+		<div class="card-header">Basic Card</div>
+		<div class="card-body">
+			<h5 class="card-title">Special title treatment</h5>
+			<p class="card-text">Lorem Ipsum is the single greatest threat. We are not - we are not keeping up with other websites. Lorem Ipsum best not make any more threats to your website. It will be met with fire and fury like the world has never seen. Does everybody know that pig named Lorem Ipsum? An 'extremely credible source' has called my office and told me that Barack Obama's placeholder text is a fraud.</p>
+		</div>
+	</div>
+</div>
+<!--/Snippet::Card:Basic-->
+
+<!--Snippet::Card:DoubleColumn-->
+<div data-snippet="Card-DoubleColumn">
+	<div class="card">
+		<div class="card-header">Basic Card</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">Special title treatment</h5>
+							<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+							<a href="#" class="btn btn-primary">Go somewhere</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">Special title treatment</h5>
+							<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+							<a href="#" class="btn btn-primary">Go somewhere</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--/Snippet::Card:DoubleColumn-->
+
+<!--Snippet::Card:Tabbed-->
+<div data-snippet="Card-Tabbed">
+	<div class="card">
+		<div class="card-header">
+			<ul class="nav nav-tabs card-header-tabs">
+				<li class="nav-item">
+					<a class="nav-link active" href="#">Active</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Link</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+				</li>
+			</ul>
+		</div>
+		<div class="card-body">
+			<h5 class="card-title">Page Title</h5>
+			<p class="card-text">Lorem Ipsum is the single greatest threat. We are not - we are not keeping up with other websites. Lorem Ipsum best not make any more threats to your website. It will be met with fire and fury like the world has never seen. Does everybody know that pig named Lorem Ipsum? An 'extremely credible source' has called my office and told me that Barack Obama's placeholder text is a fraud.</p>
+		</div>
+	</div>
+</div>
+<!--/Snippet::Card:Tabbed-->
+
+<!--Snippet::Card:Image-->
+<div data-snippet="Card-Image">
+	<div class="card mb-3">
+		<div class="row no-gutters">
+			<div class="col" style="flex-basis:150px;flex-grow:0;">
+				<img src="data:image/png;base64,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////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////AFP3ByUAABMGSURBVHja7Hz9c9tIkmxmdQMUQZG0dmxL8s2N5yz6/f9/z47oHdMWKdkzFj/BL3Tl+wGk7Nm4d3uULK9fhBGhMAVChUR2dXVVdsEUvsfD8APWD1g/YP2A9QPWVzhi/c/Y8R2Ee9qT/ScBt62xXE6ITgCEAIgiIFDU/hwpEQDq3wCI1P4q1t8JtQ0KFGC1MUBfnAT3N9hZI51kYKyRRWCMGcGaN+7sAzCh/qDgNShLJL02KKvZJWQCDE7BnJC5SEqAggMw7R6QMv9sfvc44P6HpED5nq3NNG0p7kax/kSofiIZJKPqZ3NidwuITgKUxP1fYYdRbtiR4qjhqqa1xgtSYKIJqtncfS9GZie1y089iQBr/69RSQYKTjqMLgk0iAQgSCJJUHDQRIoSDAwgIBglB2UyklZbF8j9CDtEwh2UIEBOiaDcWzu2bpASSQeIUMNKJiq4uQhzOkE4YZAAghDhkBGim5sIJIgE6ebwwEQYHE5SgCWKBtQDTDdBlizRBIPTjawoGrb5ae1bogjR6IEgXEZSTAysyaVRpkBKVEhWO7CCSAhBBtKNlmKy+tlq3oSAAIEKXttygxP0IJPMjZARyRAh0ZyE0o6tEVxmImG7qdmdQuhO6nnSwQSgm9CddKe+nzxdTAWgiwmBzhToTCh2puhMxO5UYGcCEG4Qxc5UQHcqqjuVSCc7U3UnrJ+xiyk6mBCdP35q7MKpZJ4Ehq51jWZdGLsG61inY5zP2DU+YdfAGUO3ayF0rTubdrrWtRmMHaJDzro0m9PQDTbrmBHd0LVO7LDbMYJmYdYhDR0L1gldA7ozGgM7Hc5nHc7BTmfO0Y6toVVmpHXmJAuUKIASRcnmgkUJqkBZlEVZYGGi2FwKQLEU2ARQFgCAsiiBAksBBRatckd8UaIoKdSTaWcJKMri7i+BEmyWqO8x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" class="card-img" alt="..."/>
+			</div>
+			<div class="col">
+				<div class="card-body">
+					<h5 class="card-title">Card title</h5>
+					<p class="card-text">Lorem Ipsum is the single greatest threat. We are not - we are not keeping up with other websites. Lorem Ipsum best not make any more threats to your website.</p>
+					<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--/Snippet::Card:Image-->
+
+
+<!--Snippet::Input::Group-->
+<div data-snippet="Input-Group">
+	<div class="input-group mb-3">
+		<div class="input-group-prepend">
+			<span class="input-group-text" id="basic-addon3">https://ttscloud.com/users/</span>
+		</div>
+		<input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+	</div>
+</div>
+<!--/Snippet::Input::Group-->
+
+
+<!--Snippet::Spinner:Basic-->
+<div data-snippet="Spinner-Basic" class="ib mh15">
+	<div class="spinner-border text-primary" role="status">
+	  <span class="sr-only">Loading...</span>
+	</div>
+</div>
+<!--/Snippet::Spinner:Basic-->
+
+<!--Snippet::Spinner:Grow-->
+<div data-snippet="Spinner-Grow" class="ib mh15">
+	<div class="spinner-grow text-primary" role="status">
+	  <span class="sr-only">Loading...</span>
+	</div>
+</div>
+<!--/Snippet::Spinner:Grow-->
+
+<!--Snippet::Spinner:Button-->
+<div data-snippet="Spinner-Button" class="ib mh15">
+	<button class="btn btn-primary" type="button" disabled>
+	  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+	  Loading...
+	</button>
+</div>
+<!--/Snippet::Spinner:Button-->
+
+
+<!--Snippet::Pagination::Basic-->
+<div data-snippet="Pagination-Basic">
+	<nav aria-label="Page navigation example">
+	  <ul class="pagination">
+		<li class="page-item">
+		  <a class="page-link" href="#" aria-label="Previous">
+			<span aria-hidden="true">&laquo;</span>
+		  </a>
+		</li>
+		<li class="page-item"><a class="page-link" href="#">1</a></li>
+		<li class="page-item"><a class="page-link" href="#">2</a></li>
+		<li class="page-item"><a class="page-link" href="#">3</a></li>
+		<li class="page-item">
+		  <a class="page-link" href="#" aria-label="Next">
+			<span aria-hidden="true">&raquo;</span>
+		  </a>
+		</li>
+	  </ul>
+	</nav>
+</div>
+<!--/Snippet::Pagination::Basic-->
+
+
+<!--Snippet::List::Group-->
+<div data-snippet="List-Group" class="enable-links">
+	<div class="card mb-3">
+		<div class="row no-gutters">
+			<div class="col list-group" id="list-tab" role="tablist" style="flex-basis:150px;flex-grow:0;">
+				<a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
+				<a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
+				<a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
+				<a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+			</div>
+			<div class="col">
+				<div class="card-body">
+					<div class="tab-content" id="nav-tabContent">
+						<div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">Lorem Ipsum is the single greatest threat. We are not - we are not keeping up with other websites. Lorem Ipsum best not make any more threats to your website. It will be met with fire and fury like the world has never seen. Does everybody know that pig named Lorem Ipsum? An 'extremely credible source' has called my office and told me that Barack Obama's placeholder text is a fraud.</div>
+						<div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">Cupidatat quis ad sint excepteur laborum in esse qui. Et excepteur consectetur ex nisi eu do cillum ad laborum. Mollit et eu officia dolore sunt Lorem culpa qui commodo velit ex amet id ex. Officia anim incididunt laboris deserunt anim aute dolor incididunt veniam aute dolore do exercitation. Dolor nisi culpa ex ad irure in elit eu dolore. Ad laboris ipsum reprehenderit irure non commodo enim culpa commodo veniam incididunt veniam ad.</div>
+						<div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">Lorem Ipsum is the single greatest threat. We are not - we are not keeping up with other websites. Lorem Ipsum best not make any more threats to your website. It will be met with fire and fury like the world has never seen. Does everybody know that pig named Lorem Ipsum? An 'extremely credible source' has called my office and told me that Barack Obama's placeholder text is a fraud.</div>
+						<div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">Cupidatat quis ad sint excepteur laborum in esse qui. Et excepteur consectetur ex nisi eu do cillum ad laborum. Mollit et eu officia dolore sunt Lorem culpa qui commodo velit ex amet id ex. Officia anim incididunt laboris deserunt anim aute dolor incididunt veniam aute dolore do exercitation. Dolor nisi culpa ex ad irure in elit eu dolore. Ad laboris ipsum reprehenderit irure non commodo enim culpa commodo veniam incididunt veniam ad.</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--Snippet::List::Group-->
+
+
+<!--Snippet::Toolbar::Basic-->
+<div data-snippet="Toolbar-Basic">
+	<div class="nav navbar navbar-primary bg-primary Toolbar">
+		<div>
+			<i class="fas fa-home fa-2x"></i>
+			<i class="fas fa-arrow-circle-left fa-2x"></i>
+			<i class="fas fa-arrow-circle-right fa-2x"></i>
+			<i class="fas fa-plus-circle fa-2x"></i>
+		</div>
+		<div>
+			<i class="fas fa-ellipsis-v fa-2x"></i>
+		</div>
+	</div>
+</div>
+<!--/Snippet::Toolbar::Basic-->
+
+
+</div>
+
+<br><br><br>
+
+	</body>
+</html>

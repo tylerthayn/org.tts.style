@@ -1,0 +1,7 @@
+$positions: "Top", "Bottom", "Left", "Right"
+
+@each $p in $positions
+  @for $i from 1 through 20
+    .#{$p}#{$i*5}
+      #{$p}: #{$i*5}px
+    
